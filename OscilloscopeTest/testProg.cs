@@ -74,7 +74,7 @@ namespace OscilloscopeTest
                         btnCust.Text = "Stop Wave";
                         playing = true;
                         lblPlaying.Visible = true;
-                        if(!chkLive.Checked) btnSwitch.Visible = true;
+                        btnSwitch.Visible = true;
                         wave.RunWorkerAsync();
                         if (radString.Checked) txtString.Select();
                     }
@@ -96,16 +96,6 @@ namespace OscilloscopeTest
         private void button1_Click(object sender, EventArgs e)
         {
             clearCanvas();
-            if (chkLive.Checked)
-            {
-                playWave.Stop();
-                if (radString.Checked)
-                {
-                    txtString.Text = "";
-                    txtString.Select();
-                }
-            }
-
         }
 
         // UPDATE
@@ -228,7 +218,6 @@ namespace OscilloscopeTest
             {
                 drawing = true;
                 drawPoint(e.X, e.Y, false);
-                if (chkLive.Checked && playing) updateDisplay();
             }
         }
 
@@ -283,13 +272,6 @@ namespace OscilloscopeTest
         private void txtString_TextChanged(object sender, EventArgs e)
         {
             lblStringErr.Text = "";
-            if (chkLive.Checked && radString.Checked && !stringInput(txtString.Text) && playing) updateDisplay();
-        }
-
-        // TEXT SIZE
-        private void nudSize_ValueChanged(object sender, EventArgs e)
-        {
-            if (chkLive.Checked && radString.Checked && !stringInput(txtString.Text) && playing) updateDisplay();
         }
 
 
@@ -556,9 +538,6 @@ namespace OscilloscopeTest
                 clearCanvas();
                 if (r.Equals(radFree1D) || r.Equals(radFree2D)) lblRecord.Visible = true;
                 else lblRecord.Visible = false;
-                chkLive.Checked = false;
-                if (r.Equals(radFree2D) || r.Equals(radString)) chkLive.Visible = true;
-                else chkLive.Visible = false;
             }
         }
 
@@ -646,32 +625,5 @@ namespace OscilloscopeTest
             // STRING
             else if (radString.Checked) genWave((UInt16)0, "text", (int)nudSize.Value);
         }
-
-        
-        //
-        // --Unused/Work-in-Progress Methods--
-        //
-
-        // LIVE UPDATE
-        // Intended to update the oscilloscope's display as the user draws in 2D, or types in the "String" text field
-        private void chkLive_CheckedChanged(object sender, EventArgs e)
-        {
-
-            playing = false;
-            if (wave.IsBusy) playWave.Stop();
-            clearCanvas();
-
-            if (chkLive.Checked)
-            {
-                btnSwitch.Visible = false;
-                limit = 400;
-            }
-            else
-            {
-                limit = 2000;
-                if((radString.Checked || radFree2D.Checked) && playing) btnSwitch.Visible = true;
-            }
-        }
-
     }
 }

@@ -51,7 +51,6 @@
             this.nudFreq = new System.Windows.Forms.NumericUpDown();
             this.lblPlaying = new System.Windows.Forms.Label();
             this.btnSwitch = new System.Windows.Forms.Button();
-            this.chkLive = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.trkFrequency)).BeginInit();
             this.grpType.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.nudSize)).BeginInit();
@@ -64,7 +63,7 @@
             this.trkFrequency.Maximum = 3000;
             this.trkFrequency.Minimum = 1;
             this.trkFrequency.Name = "trkFrequency";
-            this.trkFrequency.Size = new System.Drawing.Size(438, 42);
+            this.trkFrequency.Size = new System.Drawing.Size(438, 45);
             this.trkFrequency.TabIndex = 4;
             this.trkFrequency.Value = 100;
             this.trkFrequency.Scroll += new System.EventHandler(this.trackBar1_Scroll);
@@ -142,7 +141,6 @@
             // 
             // grpType
             // 
-            this.grpType.Controls.Add(this.chkLive);
             this.grpType.Controls.Add(this.nudSize);
             this.grpType.Controls.Add(this.lblStringErr);
             this.grpType.Controls.Add(this.txtString);
@@ -183,7 +181,6 @@
             0,
             0,
             0});
-            this.nudSize.ValueChanged += new System.EventHandler(this.nudSize_ValueChanged);
             this.nudSize.KeyDown += new System.Windows.Forms.KeyEventHandler(this.nudSize_KeyDown);
             // 
             // lblStringErr
@@ -351,19 +348,6 @@
             this.btnSwitch.Visible = false;
             this.btnSwitch.Click += new System.EventHandler(this.btnSwitch_Click);
             // 
-            // chkLive
-            // 
-            this.chkLive.AutoSize = true;
-            this.chkLive.Enabled = false;
-            this.chkLive.Location = new System.Drawing.Point(150, 118);
-            this.chkLive.Name = "chkLive";
-            this.chkLive.Size = new System.Drawing.Size(84, 17);
-            this.chkLive.TabIndex = 21;
-            this.chkLive.Text = "Live Update";
-            this.chkLive.UseVisualStyleBackColor = true;
-            this.chkLive.Visible = false;
-            this.chkLive.CheckedChanged += new System.EventHandler(this.chkLive_CheckedChanged);
-            // 
             // testProg
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -421,7 +405,6 @@
         private System.Windows.Forms.NumericUpDown nudSize;
         private System.Windows.Forms.Label lblPlaying;
         private System.Windows.Forms.Button btnSwitch;
-        private System.Windows.Forms.CheckBox chkLive;
     }
 }
 
